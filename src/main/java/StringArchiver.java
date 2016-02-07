@@ -234,20 +234,27 @@ public class StringArchiver {
 
     public static void main(String[] args) {
         final StringArchiver stringArchiver = new StringArchiver();
-        String origin = "Вам нужно разработать класс который будет эмулировать архивацию\n" +
+        String origin = "Разработать архиватор строк\n" +
+                "Вам нужно разработать класс который будет эмулировать архивацию\n" +
                 "В нем будет два метода Первый (compress) принимает строку и возвращает байтовый массив\n" +
-                "второй (decompress) наоборот\n" +
-                "compress будет сначала сканировать строку и искать максимальный размер повторяющейся\n" +
-                "подстроки\n" +
-                "Например для 'abc' это будет 1 для 'ababc' 2\n" +
+                "второй (decompress) наоборот.\n" +
+                "Compress будет сначала сканировать строку и искать максимальный размер повторяющейся\n" +
+                "подстроки.\n" +
+                "Например для \"abc\" это будет 1, для \"ababc\" 2/\n" +
                 "Потом во время второго сканирования исходная строка превращается в байтовый массив путем\n" +
-                "замены повторяющихся строк на некоторые уникальные идентификаторы\n" +
+                "замены повторяющихся строк на некоторые уникальные идентификаторы.\n" +
                 "decompress принимает байтовый массив и заменяет идентификаторы обратно на подстроки с\n" +
-                "целью получения исходной строки";
+                "целью получения исходной строки.";
 
         byte[] compressedBytes = stringArchiver.compress(origin);
         String decompressedString = stringArchiver.decompress(compressedBytes);
-        System.out.println(decompressedString);
+        System.out.println("original String: " + origin);
+        System.out.println("decompressed String: " + decompressedString);
+        if (decompressedString.equals(origin)){
+            System.out.println("decompress successful");
+        }  else {
+            System.out.println("decompress not successful");
+        }
     }
 
 
